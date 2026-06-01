@@ -1,0 +1,5 @@
+.build/
+LinkedInLookup.app/
+.DS_Store
+.swiftpm/
+*.xcodeproj/
