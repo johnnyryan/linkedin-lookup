@@ -15,7 +15,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         )
         window.title = "LinkedIn Lookup"
         window.contentView = hosting
-        window.contentMinSize = NSSize(width: 340, height: 420)
+        window.contentMinSize = NSSize(width: 240, height: 280)
         window.setFrameAutosaveName("LinkedInLookupMainPanel")
         if !window.setFrameUsingName("LinkedInLookupMainPanel") {
             window.center()
@@ -111,7 +111,7 @@ struct ContentView: View {
             results
         }
         .padding(14)
-        .frame(minWidth: 340, minHeight: 440)
+        .frame(minWidth: 240, maxWidth: .infinity, minHeight: 280, maxHeight: .infinity)
     }
 
     private var dropBox: some View {
