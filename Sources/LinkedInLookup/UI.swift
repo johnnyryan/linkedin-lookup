@@ -2,30 +2,26 @@ import AppKit
 import SwiftUI
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
-    var panel: NSPanel!
+    var window: NSWindow!
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         installMainMenu()
         let hosting = NSHostingView(rootView: ContentView())
-        let panel = NSPanel(
+        let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 380, height: 520),
-            styleMask: [.titled, .closable, .resizable, .utilityWindow, .nonactivatingPanel],
+            styleMask: [.titled, .closable, .miniaturizable, .resizable],
             backing: .buffered,
             defer: false
         )
-        panel.title = "LinkedIn Lookup"
-        panel.isFloatingPanel = true
-        panel.level = .floating
-        panel.hidesOnDeactivate = false
-        panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
-        panel.contentView = hosting
-        panel.contentMinSize = NSSize(width: 340, height: 420)
-        panel.setFrameAutosaveName("LinkedInLookupMainPanel")
-        if !panel.setFrameUsingName("LinkedInLookupMainPanel") {
-            panel.center()
+        window.title = "LinkedIn Lookup"
+        window.contentView = hosting
+        window.contentMinSize = NSSize(width: 340, height: 420)
+        window.setFrameAutosaveName("LinkedInLookupMainPanel")
+        if !window.setFrameUsingName("LinkedInLookupMainPanel") {
+            window.center()
         }
-        panel.makeKeyAndOrderFront(nil)
-        self.panel = panel
+        window.makeKeyAndOrderFront(nil)
+        self.window = window
         NSApp.activate(ignoringOtherApps: true)
     }
 
